@@ -4,17 +4,16 @@ import fr.esgi.commun.dto.Candidat;
 import fr.esgi.commun.dto.Entretien;
 import fr.esgi.commun.dto.Recruteur;
 import fr.esgi.commun.dto.Salle;
-import fr.esgi.commun.repository.SalleRepository;
 
 import java.util.Date;
 
 public class PlanifierEntretien {
 
-    public Entretien planifier(Candidat candidat, Date horaire, RecruteurRepository recruteur, SalleRepository salle) {
+    public Entretien planifier(Candidat candidat, Date horaire, RecruteursRepository recruteurs, SallesRepository salles) {
 
         // Given
-        Recruteur selectedRecruteur = recruteur.findByExperience(candidat.anneesExperience);
-        Salle  selectedSalle = salle.findAvailable();
+        Recruteur selectedRecruteur = recruteurs.findByExperience(candidat.anneesExperience);
+        Salle  selectedSalle = salles.findAvailable();
 
         // WHEN
         Entretien entretien = new Entretien();
