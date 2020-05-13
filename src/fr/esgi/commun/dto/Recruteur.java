@@ -1,9 +1,9 @@
-package fr.esgi.use_case.entretien.dto;
+package fr.esgi.commun.dto;
 
 import java.util.Date;
 import java.util.List;
 
-public class Candidat {
+public class Recruteur {
     public String name;
     public List<Competences> competences;
     public int anneesExperience;

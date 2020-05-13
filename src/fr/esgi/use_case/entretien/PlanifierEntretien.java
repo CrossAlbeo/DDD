@@ -1,42 +1,58 @@
 package fr.esgi.use_case.entretien;
 
-import fr.esgi.use_case.entretien.dto.Candidat;
-import fr.esgi.use_case.entretien.dto.Entretien;
-import fr.esgi.use_case.entretien.dto.Recruteur;
-import fr.esgi.use_case.entretien.dto.Salle;
+import fr.esgi.commun.dto.Candidat;
+import fr.esgi.commun.dto.Entretien;
+import fr.esgi.commun.dto.Recruteur;
+import fr.esgi.commun.dto.Salle;
+import fr.esgi.commun.repository.SalleRepository;
 
 import java.util.Date;
-import java.util.List;
 
 public class PlanifierEntretien {
-    public Entretien planifier(Candidat candidat, Date horaire, List<Recruteur> recruteurs, List<Salle> salles) {
 
-        Recruteur selectedRecruteur = null;
-        Salle  selectedSalle = null;
+    public Entretien planifier(Candidat candidat, Date horaire, RecruteurRepository recruteur, SalleRepository salle) {
 
-        for (int i = 0; i < salles.size(); i++) {
-            if (salles.get(i).disponible) {
-                selectedSalle  = salles.get(i);
-            }
-        }
+        // Given
+        Recruteur selectedRecruteur = recruteur.findByExperience(candidat.anneesExperience);
+        Salle  selectedSalle = salle.findAvailable();
 
-        if (selectedSalle == null) {
-            System.out.println("Pas de salle disponible...");
-            return null;
-        }
+        // WHEN
+        Entretien entretien = new Entretien();
 
-        for (int i = 0; i < recruteurs.size(); i++) {
-            if (recruteurs.get(i).competences == candidat.competences) {
-                if (recruteurs.get(i).anneesExperience > candidat.anneesExperience)
-                    selectedRecruteur = recruteurs.get(i);
-            }
-        }
+        // THEN
+        entretien.ajoutCandidat(candidat);
+        entretien.ajoutHoraire(horaire);
+        entretien.ajoutRecruteur(selectedRecruteur);
+        entretien.ajoutSalle(selectedSalle);
 
-        if(selectedRecruteur == null) {
-            System.out.println("Pas de recruteur disponible...");
-            return null;
-        }
+        return entretien;
 
-        return new Entretien(candidat, horaire, selectedSalle, selectedRecruteur);
+//        /!\ LEGACY
+//        // GIVEN
+//        for (int i = 0; i < salles.size(); i++) {
+//            if (salles.get(i).disponible) {
+//                selectedSalle  = salles.get(i);
+//            }
+//        }
+//
+//        if (selectedSalle == null) {
+//            System.out.println("Pas de salle disponible...");
+//            return null;
+//        }
+//
+//        // GIVEN
+//        for (int i = 0; i < recruteurs.size(); i++) {
+//            if (recruteurs.get(i).competences == candidat.competences) {
+//                if (recruteurs.get(i).anneesExperience > candidat.anneesExperience)
+//                    selectedRecruteur = recruteurs.get(i);
+//            }
+//        }
+//
+//        if(selectedRecruteur == null) {
+//            System.out.println("Pas de recruteur disponible...");
+//            return null;
+//        }
+//
+
     }
 }

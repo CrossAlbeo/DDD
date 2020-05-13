@@ -1,4 +1,4 @@
-package fr.esgi.use_case.entretien.dto;
+package fr.esgi.commun.dto;
 
 public class Salle {
     public String numero;
