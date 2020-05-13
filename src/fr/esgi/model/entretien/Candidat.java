@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Candidat {
     public String name;
-    public List<Competence> competences;
+    public List<Competences> competences;
     public int anneesExperience;
     public List<Date> disponibilites;
 }
