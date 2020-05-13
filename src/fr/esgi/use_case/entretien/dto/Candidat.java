@@ -1,4 +1,4 @@
-package fr.esgi.model.entretien;
+package fr.esgi.use_case.entretien.dto;
 
 import java.util.Date;
 import java.util.List;
