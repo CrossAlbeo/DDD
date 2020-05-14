@@ -1,9 +1,9 @@
 given
-Un candidat Java qui est disponible demain
+Un candidatDto Java qui est disponible demain
 
 And
 
-Un référentiel de consultant recruteur avec des disponibilités et compétences
+Un référentiel de consultant recruteurDto avec des disponibilités et compétences
 
 And
 
@@ -11,8 +11,8 @@ Un référentiel des salles avec des disponibilités
 
 When
 
-je planifie un entretien pour le candidat pour demain
+je planifie un entretien pour le candidatDto pour demain
 
 Then
 
-un entretien est planifie pour le candidat avec un recruteur demain
+un entretien est planifie pour le candidatDto avec un recruteurDto demain

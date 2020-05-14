@@ -1,8 +1,8 @@
 package fr.esgi.use_case.entretien;
 
 import fr.esgi.commun.dto.*;
+import fr.esgi.model.Entretien;
 
-import java.util.Date;
 import java.util.UUID;
 
 public class PlanifierEntretien {
@@ -17,19 +17,19 @@ public class PlanifierEntretien {
         this.entretiens = entretiens;
     }
 
-    public void planifier(Candidat candidat, Date horaire) {
+    // TODO id Candidat
+    public void planifier(CandidatDto candidatDto, CreneauDto creneauDto) {
 
         // Given
-        Recruteur selectedRecruteur = this.recruteurs.findByExperience(candidat.anneesExperience);
-        Salle  selectedSalle = this.salles.findAvailable();
+        RecruteurDto selectedRecruteurDto = this.recruteurs.getAvailable(creneauDto);
+        SalleDto selectedSalleDto = this.salles.findAvailable();
 
         UUID uid = UUID.randomUUID();
 
         // WHEN
-        Entretien entretien = new EntretienPlanifie(uid, candidat, selectedRecruteur, selectedSalle, horaire);
+        Entretien entretien = new Entretien(candidatDto, selectedRecruteurDto, selectedSalleDto, creneauDto);
 
         // THEN
         entretiens.sauvegarder(entretien);
-
     }
 }

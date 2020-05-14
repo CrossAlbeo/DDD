@@ -1,7 +1,7 @@
 package fr.esgi.use_case.entretien;
 
-import fr.esgi.commun.dto.Salle;
+import fr.esgi.commun.dto.SalleDto;
 
 public interface SalleRepository {
-    Salle findAvailable();
+    SalleDto findAvailable();
 }

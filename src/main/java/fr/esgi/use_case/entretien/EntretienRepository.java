@@ -1,6 +1,6 @@
 package fr.esgi.use_case.entretien;
 
-import fr.esgi.commun.dto.Entretien;
+import fr.esgi.model.Entretien;
 
 public interface EntretienRepository {
     void sauvegarder(Entretien entretien);
