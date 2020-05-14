@@ -1,11 +1,13 @@
 package fr.esgi.model;
 
 import fr.esgi.commun.dto.CreneauDto;
+import lombok.Getter;
 
+@Getter
 public class Creneau {
-    String date;
-    String heureDebut;
-    String heureFin;
+    private final String date;
+    private final String heureDebut;
+    private final String heureFin;
 
     public Creneau(String date, String heureDebut, String heureFin) {
         this.date = date;
@@ -17,29 +19,5 @@ public class Creneau {
         this.date = creneauDto.getDate();
         this.heureDebut = creneauDto.getHeureDebut();
         this.heureFin = creneauDto.getHeureFin();
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getHeureDebut() {
-        return heureDebut;
-    }
-
-    public void setHeureDebut(String heureDebut) {
-        this.heureDebut = heureDebut;
-    }
-
-    public String getHeureFin() {
-        return heureFin;
-    }
-
-    public void setHeureFin(String heureFin) {
-        this.heureFin = heureFin;
     }
 }

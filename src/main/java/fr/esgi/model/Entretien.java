@@ -1,39 +1,45 @@
 package fr.esgi.model;
 
 import fr.esgi.commun.dto.*;
+import fr.esgi.commun.mappers.CandidatMapper;
+import fr.esgi.commun.mappers.CreneauMapper;
+import fr.esgi.commun.mappers.RecruteurMapper;
+import fr.esgi.commun.mappers.SalleMapper;
+import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 public class Entretien {
     final UUID uid;
     final Candidat candidat;
-    final Recruteur recruteur;
-    final Salle salle;
-    final Creneau creneau;
+    Recruteur recruteur;
+    ReservationSalle reservationSalle;
+    Creneau creneau;
     Status status;
 
-    public Entretien(CandidatDto candidatDto, RecruteurDto recruteurDto, SalleDto salleDto, CreneauDto creneauDto) {
+    public Entretien(CandidatDto candidatDto) {
         this.uid = UUID.randomUUID();
+        this.candidat = CandidatMapper.instance.toModel(candidatDto);
+    }
 
-        List<Creneau> disponibilitesCandidat = new ArrayList<Creneau>();
-        for (int i = 0; i < candidatDto.getDisponibilites().size(); i++) {
-            disponibilitesCandidat.add(new Creneau(candidatDto.getDisponibilites().get(i)));
+    public void planifier(List<RecruteurDto> recruteursDto, List<SalleDto> sallesDto,
+                          CreneauDto creneauDto) {
+        List<Recruteur> recruteurs = RecruteurMapper.instance.toModel(recruteursDto);
+        for (Recruteur recruteur:
+             recruteurs) {
+            if (recruteur.estQualifie(this.candidat) &&
+                    recruteur.getAnneesExperience() > this.candidat.getAnneesExperience()) {
+                this.recruteur = recruteur;
+            }
         }
 
-        this.candidat = new Candidat(candidatDto.getName(), candidatDto.getCompetences(),
-                candidatDto.getAnneesExperience(), disponibilitesCandidat);
-
-        List<Creneau> disponibilitesRecruteur = new ArrayList<Creneau>();
-        for(int i = 0; i < recruteurDto.getDisponibilites().size(); i++) {
-            disponibilitesRecruteur.add(new Creneau(recruteurDto.getDisponibilites().get(i)));
+        if (sallesDto.size() > 0) {
+             this.reservationSalle = new ReservationSalle(SalleMapper.instance.toModel(sallesDto.get(0)));
         }
 
-        this.recruteur = new Recruteur(recruteurDto.getName(), recruteurDto.getCompetences(),
-                recruteurDto.getAnneesExperience(), disponibilitesRecruteur);
-        this.salle = new Salle(salleDto.getNumero(), salleDto.getCapacite(), salleDto.getBatiment(), salleDto.isDisponible());
-        this.creneau = new Creneau(creneauDto.getDate(), creneauDto.getHeureDebut(), creneauDto.getHeureFin());
+        this.creneau = CreneauMapper.instance.toModel(creneauDto);
         this.status = Status.Planifie;
     }
 

@@ -1,60 +1,38 @@
 package fr.esgi.model;
 
-import fr.esgi.commun.dto.Competences;
+import fr.esgi.commun.dto.Competence;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 public class Recruteur {
-    private String name;
-    private List<Competences> competences;
+    private final UUID uuid;
+    private final String name;
+    private List<Competence> competences;
     private int anneesExperience;
     private List<Creneau> disponibilites;
 
-    public boolean estCapableEvoluer(UUID uuid) {
+    public boolean estQualifie(Candidat candidat) {
+        for (Competence competence:
+             this.getCompetences()) {
+            if (!candidat.getCompetences().contains(competence)) {
+                return false;
+            }
+        }
         return true;
-    }
-
-    public Recruteur(String name, List<Competences> competences, int anneesExperience, List<Creneau> disponibilites) {
-        this.name = name;
-        this.competences = competences;
-        this.anneesExperience = anneesExperience;
-        this.disponibilites = disponibilites;
     }
 
     public boolean estDisponible(Creneau creneau) {
         return true;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Recruteur(String name, List<Competence> competences, int anneesExperience, List<Creneau> disponibilites) {
+        this.uuid = UUID.randomUUID();
         this.name = name;
-    }
-
-    public List<Competences> getCompetences() {
-        return competences;
-    }
-
-    public void setCompetences(List<Competences> competences) {
         this.competences = competences;
-    }
-
-    public int getAnneesExperience() {
-        return anneesExperience;
-    }
-
-    public void setAnneesExperience(int anneesExperience) {
         this.anneesExperience = anneesExperience;
-    }
-
-    public List<Creneau> getDisponibilites() {
-        return disponibilites;
-    }
-
-    public void setDisponibilites(List<Creneau> disponibilites) {
         this.disponibilites = disponibilites;
     }
 }
