@@ -1,57 +1,35 @@
 package fr.esgi.use_case.entretien;
 
-import fr.esgi.commun.dto.Candidat;
-import fr.esgi.commun.dto.Entretien;
-import fr.esgi.commun.dto.Recruteur;
-import fr.esgi.commun.dto.Salle;
+import fr.esgi.commun.dto.*;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class PlanifierEntretien {
 
-    public Entretien planifier(Candidat candidat, Date horaire, RecruteursRepository recruteurs, SallesRepository salles) {
+    final RecruteurRepository recruteurs;
+    final SalleRepository salles;
+    final EntretienRepository entretiens;
+
+    public PlanifierEntretien(EntretienRepository entretiens, RecruteurRepository recruteurs, SalleRepository salles) {
+        this.recruteurs = recruteurs;
+        this.salles = salles;
+        this.entretiens = entretiens;
+    }
+
+    public void planifier(Candidat candidat, Date horaire) {
 
         // Given
-        Recruteur selectedRecruteur = recruteurs.findByExperience(candidat.anneesExperience);
-        Salle  selectedSalle = salles.findAvailable();
+        Recruteur selectedRecruteur = this.recruteurs.findByExperience(candidat.anneesExperience);
+        Salle  selectedSalle = this.salles.findAvailable();
+
+        UUID uid = UUID.randomUUID();
 
         // WHEN
-        Entretien entretien = new Entretien();
+        Entretien entretien = new EntretienPlanifie(uid, candidat, selectedRecruteur, selectedSalle, horaire);
 
         // THEN
-        entretien.ajoutCandidat(candidat);
-        entretien.ajoutHoraire(horaire);
-        entretien.ajoutRecruteur(selectedRecruteur);
-        entretien.ajoutSalle(selectedSalle);
-
-        return entretien;
-
-//        /!\ LEGACY
-//        // GIVEN
-//        for (int i = 0; i < salles.size(); i++) {
-//            if (salles.get(i).disponible) {
-//                selectedSalle  = salles.get(i);
-//            }
-//        }
-//
-//        if (selectedSalle == null) {
-//            System.out.println("Pas de salle disponible...");
-//            return null;
-//        }
-//
-//        // GIVEN
-//        for (int i = 0; i < recruteurs.size(); i++) {
-//            if (recruteurs.get(i).competences == candidat.competences) {
-//                if (recruteurs.get(i).anneesExperience > candidat.anneesExperience)
-//                    selectedRecruteur = recruteurs.get(i);
-//            }
-//        }
-//
-//        if(selectedRecruteur == null) {
-//            System.out.println("Pas de recruteur disponible...");
-//            return null;
-//        }
-//
+        entretiens.sauvegarder(entretien);
 
     }
 }

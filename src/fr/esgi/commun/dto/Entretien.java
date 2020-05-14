@@ -1,26 +1,24 @@
 package fr.esgi.commun.dto;
 
 import java.util.Date;
+import java.util.UUID;
 
-public class Entretien {
-    Candidat candidat;
-    Recruteur recruteur;
-    Salle salle;
-    Date horaire;
+enum Status {Confirme, Annule, Planifie}
 
-    public void ajoutCandidat(Candidat candidat) {
+public abstract class Entretien {
+    final UUID uid;
+    final Candidat candidat;
+    final Recruteur recruteur;
+    final Salle salle;
+    final Date horaire;
+    final Status status;
+
+    public Entretien(UUID uid, Candidat candidat, Recruteur recruteur, Salle salle, Date horaire, Status status) {
+        this.uid = uid;
         this.candidat = candidat;
-    }
-
-    public void ajoutRecruteur(Recruteur recruteur) {
         this.recruteur = recruteur;
-    }
-
-    public void ajoutSalle(Salle salle){
         this.salle = salle;
-    }
-
-    public void ajoutHoraire(Date horaire){
         this.horaire = horaire;
+        this.status = status;
     }
 }
