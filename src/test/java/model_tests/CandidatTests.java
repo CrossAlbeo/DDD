@@ -42,7 +42,7 @@ public class CandidatTests {
     }
     @Test
     void should_be_annuled() {
-        entretien.setStatus(Status.Annule);
+        entretien.annuler();
         assertEquals(Status.Annule, entretien.getStatus());
     }
 
