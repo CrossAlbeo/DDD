@@ -15,7 +15,7 @@ class Creneau {
     private int heureDebut;
     private int heureFin;
 
-    boolean contient(Creneau creneau) {
+    public boolean contient(Creneau creneau) {
         if (!this.date.equals(creneau.date)) {
             return false;
         }
