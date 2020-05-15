@@ -9,8 +9,8 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class SalleDto {
     private UUID uuid;
     private String numero;

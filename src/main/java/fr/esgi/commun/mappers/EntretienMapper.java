@@ -15,6 +15,7 @@ public interface EntretienMapper extends fr.esgi.commun.mappers.Mappers<Entretie
     @Mapping(target = "uuidCandidat", source = "candidat.uuid")
     @Mapping(target = "uuidRecruteur", source = "recruteur.uuid")
     @Mapping(target = "uuidReservationSalle", source = "reservationSalle.uuid")
+    @Mapping(target = "creneauDto", source = "creneau")
     EntretienDto toDto(Entretien entretien);
 
     List<EntretienDto> toDto(List<Entretien> entretiens);

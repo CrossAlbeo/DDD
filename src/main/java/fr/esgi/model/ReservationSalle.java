@@ -14,7 +14,7 @@ public class ReservationSalle {
     private Salle salle;
     private Creneau creneau;
 
-    public ReservationSalle(Salle salle, Creneau creneau) {
+    ReservationSalle(Salle salle, Creneau creneau) {
         this.uuid = UUID.randomUUID();
         this.salle = salle;
         this.creneau = creneau;

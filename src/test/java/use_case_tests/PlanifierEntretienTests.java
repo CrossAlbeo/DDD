@@ -5,6 +5,7 @@ import fr.esgi.commun.dto.EntretienDto;
 import fr.esgi.commun.mappers.CandidatMapper;
 import fr.esgi.model.Candidat;
 import fr.esgi.model.Competence;
+import fr.esgi.model.Status;
 import fr.esgi.use_case.entretien.PlanifierEntretien;
 import fr.esgi.use_case.entretien.repository.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,13 +30,13 @@ class PlanifierEntretienTests {
 
     @BeforeEach
     void setup() {
-        planifierEntretien = new PlanifierEntretien(candidats, entretiens, recruteurs, salles, reservationsSalle);
-
         List<Competence> competences = new ArrayList<>();
         competences.add(Competence.PHP);
 
         Candidat candidat = new Candidat(uuidCandidat, "Nicolas", competences, 5);
         candidats.sauvegarder(CandidatMapper.instance.toDto(candidat));
+
+        planifierEntretien = new PlanifierEntretien(candidats, entretiens, recruteurs, salles, reservationsSalle);
     }
 
     @Test
@@ -54,7 +55,12 @@ class PlanifierEntretienTests {
 
         assertEquals(1, entretiens.find().size());
         EntretienDto entretienDto = entretiens.find().get(0);
+        assertEquals(Status.Planifie, entretienDto.getStatus());
 
-        assertEquals(recruteurs.find().get(0).getUuid().toString(), entretienDto.getUuidRecruteur().toString());
+        System.out.println(recruteurs.find().get(0));
+        System.out.println(entretienDto.getUuidRecruteur());
+        System.out.println(entretienDto.getUuidCandidat());
+        System.out.println(entretienDto.getUuidReservationSalle());
+        assertEquals(recruteurs.find().get(0).getUuid(), entretienDto.getUuidRecruteur());
     }
 }
