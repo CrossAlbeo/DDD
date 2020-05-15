@@ -1,6 +1,5 @@
 package fr.esgi.model;
 
-import fr.esgi.commun.dto.Competence;
 import lombok.Getter;
 
 import java.util.List;

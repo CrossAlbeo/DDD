@@ -1,3 +1,3 @@
-package fr.esgi.commun.dto;
+package fr.esgi.model;
 
 public enum Status {Confirme, Annule, Planifie}
