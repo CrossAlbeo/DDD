@@ -2,6 +2,7 @@ package use_case_tests;
 
 import fr.esgi.commun.dto.CreneauDto;
 import fr.esgi.commun.dto.EntretienDto;
+import fr.esgi.commun.dto.RecruteurDto;
 import fr.esgi.commun.mappers.CandidatMapper;
 import fr.esgi.model.Candidat;
 import fr.esgi.model.Competence;
@@ -53,14 +54,18 @@ class PlanifierEntretienTests {
         CreneauDto creneauDto = new CreneauDto("20/05/16", 10, 11);
         planifierEntretien.planifier(uuidCandidat, creneauDto);
 
+        // Test etat entretien
         assertEquals(1, entretiens.find().size());
         EntretienDto entretienDto = entretiens.find().get(0);
         assertEquals(Status.Planifie, entretienDto.getStatus());
 
-        System.out.println(recruteurs.find().get(0));
-        System.out.println(entretienDto.getUuidRecruteur());
-        System.out.println(entretienDto.getUuidCandidat());
-        System.out.println(entretienDto.getUuidReservationSalle());
-        assertEquals(recruteurs.find().get(0).getUuid(), entretienDto.getUuidRecruteur());
+        // Test etat Recruteur
+        RecruteurDto recruteurDto = recruteurs.find().get(0);
+        assertEquals(recruteurDto.getUuid(), entretienDto.getUuidRecruteur());
+        // Save() ajoute au repository dans notre implémentation de tests,
+        // mais dans un cas réel (ou avec plus de temps disponible), l'update se ferait (au lieu du add()).
+
+        // Test etat réseration salle
+        assertEquals(1, reservationsSalle.find().size());
     }
 }

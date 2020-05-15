@@ -1,32 +1,26 @@
 package model_tests;
 
-import fr.esgi.commun.dto.CandidatDto;
-import fr.esgi.commun.dto.CreneauDto;
-import fr.esgi.commun.dto.RecruteurDto;
-import fr.esgi.commun.dto.SalleDto;
 import fr.esgi.model.*;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class RecruteurTest {
+class RecruteurTest {
 
-    private static Recruteur recruteur1;
-    private static final UUID uuidRecruteur1 = UUID.randomUUID();
-    private static Recruteur recruteur2;
-    private static final UUID uuidRecruteur2 = UUID.randomUUID();
-    private static Candidat candidat;
-    private static final UUID uuidcandidat = UUID.randomUUID();
+    private Recruteur recruteur1;
+    private final UUID uuidRecruteur1 = UUID.randomUUID();
+    private Recruteur recruteur2;
+    private final UUID uuidRecruteur2 = UUID.randomUUID();
+    private Candidat candidat;
+    private final UUID uuidcandidat = UUID.randomUUID();
 
-    @BeforeAll
-    static void setup() {
-
+    @BeforeEach
+    void setup() {
         List<Competence> competences1 = new ArrayList<>();
         competences1.add(Competence.Java);
         competences1.add(Competence.PHP);
@@ -45,13 +39,28 @@ public class RecruteurTest {
     }
 
     @Test
-    void should_be_created() {
-        assertNotNull(entretien);
+    void should_be_qualified() {
+        assertFalse(recruteur1.estQualifie(candidat));
+        assertTrue(recruteur2.estQualifie(candidat));
     }
 
     @Test
-    void should_be_confirmed() {
-        //entretien.confirmer();
-        //assertEquals(Status.Confirme, entretien.getStatus());
+    void should_get_creneau_disponible() {
+        Creneau creneau = new Creneau("20/05/15", 14, 15);
+
+        Creneau creneauDisponible = recruteur1.creneauDisponible(creneau);
+
+        assertEquals("20/05/15",creneauDisponible.getDate());
+        assertEquals(10, creneauDisponible.getHeureDebut());
+        assertEquals(17, creneauDisponible.getHeureFin());
+    }
+
+    @Test
+    void should_remove_creneau() {
+        Creneau creneauARetirer = recruteur1.getDisponibilites().get(0);
+
+        recruteur1.reserverCreneau(creneauARetirer);
+
+        assertEquals(0, recruteur1.getDisponibilites().size());
     }
 }

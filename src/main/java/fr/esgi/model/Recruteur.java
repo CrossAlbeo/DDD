@@ -20,17 +20,17 @@ public class Recruteur {
     private int anneesExperience;
     private List<Creneau> disponibilites;
 
-    boolean estQualifie(Candidat candidat) {
+    public boolean estQualifie(Candidat candidat) {
         for (Competence competence :
-                this.getCompetences()) {
-            if (!candidat.getCompetences().contains(competence)) {
+                candidat.getCompetences()) {
+            if (!this.competences.contains(competence)) {
                 return false;
             }
         }
         return true;
     }
 
-    Creneau creneauDisponible(Creneau creneau) {
+    public Creneau creneauDisponible(Creneau creneau) {
         List<Creneau> creneaux = this.disponibilites
                 .stream()
                 .filter(creneauRecruteur -> creneauRecruteur.contient(creneau))
@@ -39,7 +39,7 @@ public class Recruteur {
         return creneaux.size() > 0 ? creneaux.get(0) : null;
     }
 
-    void reserverCreneau(Creneau creneauDisponible) {
+    public void reserverCreneau(Creneau creneauDisponible) {
         this.disponibilites.remove(creneauDisponible);
     }
 }
