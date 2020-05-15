@@ -35,7 +35,7 @@ public class CandidatTests {
     }
 
     @Test
-    void should_be_ceated() {
+    void should_be_created() {
         assertNotNull(entretien);
     }
 
@@ -56,5 +56,5 @@ public class CandidatTests {
         entretien.reporter();
         assertEquals(Status.Planifie, entretien.getStatus());
     }
-    
+
 }
