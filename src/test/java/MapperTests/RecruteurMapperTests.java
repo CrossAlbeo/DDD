@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-public class RecruteurMapperTests {
+class RecruteurMapperTests {
     private static Recruteur recruteur;
     private static RecruteurDto recruteurDto;
     private static UUID uuidCreneau = UUID.randomUUID();
@@ -27,7 +27,7 @@ public class RecruteurMapperTests {
 
 
     @BeforeAll
-    public static void setup() {
+    static void setup() {
         List<Competence> competences = new ArrayList<>();
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
@@ -42,12 +42,12 @@ public class RecruteurMapperTests {
     }
 
     @Test
-    public void should_map_to_entity() {
+    void should_map_to_dto() {
         RecruteurDto dto = RecruteurMapper.instance.toDto(recruteur);
 
         assertNotNull(dto);
         assertEquals(recruteur.getUuid(), dto.getUuid());
-        assertEquals("John", dto.getName());
+        assertEquals("John", dto.getNom());
         assertEquals(recruteur.getCompetences(), dto.getCompetences());
         assertEquals(10, dto.getAnneesExperience());
         assertEquals(1, dto.getDisponibilites().size());

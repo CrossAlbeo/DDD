@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CandidatDto {
     private UUID uuid;
-    private String name;
+    private String nom;
     private List<Competence> competences;
     private int anneesExperience;
     private List<CreneauDto> disponibilites;

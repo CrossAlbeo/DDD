@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Recruteur {
     private UUID uuid;
-    private String name;
+    private String nom;
     private List<Competence> competences;
     private int anneesExperience;
     private List<Creneau> disponibilites;
@@ -31,9 +31,9 @@ public class Recruteur {
         return true;
     }
 
-    public Recruteur(String name, List<Competence> competences, int anneesExperience, List<Creneau> disponibilites) {
+    public Recruteur(String nom, List<Competence> competences, int anneesExperience, List<Creneau> disponibilites) {
         this.uuid = UUID.randomUUID();
-        this.name = name;
+        this.nom = nom;
         this.competences = competences;
         this.anneesExperience = anneesExperience;
         this.disponibilites = disponibilites;
