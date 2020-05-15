@@ -6,8 +6,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
+import java.util.UUID;
 
-@Mapper
+@Mapper(imports = UUID.class)
 public interface RecruteurMapper extends fr.esgi.commun.mappers.Mappers<RecruteurDto, Recruteur> {
     RecruteurMapper instance = Mappers.getMapper(RecruteurMapper.class);
 

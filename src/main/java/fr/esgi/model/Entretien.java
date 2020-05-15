@@ -6,14 +6,16 @@ import fr.esgi.commun.mappers.CreneauMapper;
 import fr.esgi.commun.mappers.RecruteurMapper;
 import fr.esgi.commun.mappers.SalleMapper;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public class Entretien {
-    final UUID uuid;
-    final Candidat candidat;
+    UUID uuid;
+    Candidat candidat;
     Recruteur recruteur;
     ReservationSalle reservationSalle;
     Creneau creneau;

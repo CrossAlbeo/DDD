@@ -1,15 +1,17 @@
 package fr.esgi.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public class Salle {
-    private final UUID uuid;
-    private final String numero;
-    private final int capacite;
-    private final String batiment;
+    private UUID uuid;
+    private String numero;
+    private int capacite;
+    private String batiment;
     private boolean disponible;
 
     public Salle(String numero, int capacite, String batiment, boolean disponible) {

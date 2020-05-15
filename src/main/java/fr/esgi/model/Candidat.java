@@ -3,13 +3,15 @@ package fr.esgi.model;
 import fr.esgi.commun.dto.CandidatDto;
 import fr.esgi.commun.mappers.CandidatMapper;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public class Candidat {
-    private final UUID uuid;
+    private UUID uuid;
     private String nom;
     private List<Competence> competences;
     private int anneesExperience;

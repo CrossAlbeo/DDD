@@ -2,15 +2,17 @@ package fr.esgi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Recruteur {
-    private final UUID uuid;
-    private final String name;
+    private UUID uuid;
+    private String name;
     private List<Competence> competences;
     private int anneesExperience;
     private List<Creneau> disponibilites;

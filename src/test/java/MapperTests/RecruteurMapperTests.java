@@ -18,37 +18,37 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class RecruteurMapperTests {
-    private Recruteur recruteur;
-    private RecruteurDto recruteurDto;
-    private final UUID uuidCreneau = UUID.randomUUID();
-    private final UUID uuidRecruteur = UUID.randomUUID();
-    private final UUID uuidRecruteurDto = UUID.randomUUID();
-    private final UUID uuidCreneauDto = UUID.randomUUID();
+    private static Recruteur recruteur;
+    private static RecruteurDto recruteurDto;
+    private static UUID uuidCreneau = UUID.randomUUID();
+    private static UUID uuidRecruteur = UUID.randomUUID();
+    private static UUID uuidRecruteurDto = UUID.randomUUID();
+    private static UUID uuidCreneauDto = UUID.randomUUID();
 
 
     @BeforeAll
-    public void setup() {
+    public static void setup() {
         List<Competence> competences = new ArrayList<>();
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
 
         List<Creneau> creneaux = new ArrayList<>();
         creneaux.add(new Creneau(uuidCreneau,"date", "14", "15"));
-        this.recruteur = new Recruteur(uuidRecruteur,"John", competences, 10, creneaux);
+        recruteur = new Recruteur(uuidRecruteur,"John", competences, 10, creneaux);
 
         List<CreneauDto> creneauxDto = new ArrayList<>();
         creneauxDto.add(new CreneauDto(uuidCreneauDto, "dateDebut", "10", "11"));
-        this.recruteurDto = new RecruteurDto(uuidRecruteurDto, "Doe", competences, 5, creneauxDto);
+        recruteurDto = new RecruteurDto(uuidRecruteurDto, "Doe", competences, 5, creneauxDto);
     }
 
     @Test
     public void should_map_to_entity() {
-        RecruteurDto dto = RecruteurMapper.instance.toDto(this.recruteur);
+        RecruteurDto dto = RecruteurMapper.instance.toDto(recruteur);
 
         assertNotNull(dto);
-        assertEquals(this.recruteur.getUuid(), dto.getUuid());
+        assertEquals(recruteur.getUuid(), dto.getUuid());
         assertEquals("John", dto.getName());
-        assertEquals(this.recruteur.getCompetences(), dto.getCompetences());
+        assertEquals(recruteur.getCompetences(), dto.getCompetences());
         assertEquals(10, dto.getAnneesExperience());
         assertEquals(1, dto.getDisponibilites().size());
         assertEquals("date", dto.getDisponibilites().get(0).getDate());

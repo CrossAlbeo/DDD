@@ -3,15 +3,19 @@ package fr.esgi.commun.dto;
 import fr.esgi.model.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.UUID;
 
 @Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class EntretienDto {
-    private final UUID uuid;
-    private final UUID uuidCreneau;
-    private final UUID uuidCandidat;
-    private final UUID uuidReservationSalle;
-    private final Status status;
+    private UUID uuid;
+    private UUID uuidCreneau;
+    private UUID uuidCandidat;
+    private UUID uuidReservationSalle;
+    private Status status;
 }

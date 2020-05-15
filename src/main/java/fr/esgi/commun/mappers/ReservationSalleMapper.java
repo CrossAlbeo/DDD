@@ -8,6 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mapper
@@ -18,7 +19,13 @@ public interface ReservationSalleMapper extends fr.esgi.commun.mappers.Mappers<R
         return new ReservationSalle(reservationSalleDto.getUuid(), salle);
     }
 
-    List<ReservationSalle> toModel(List<ReservationSalleDto> reservationsSalleDto, List<Salle> salles);
+    default List<ReservationSalle> toModel(List<ReservationSalleDto> reservationsSalleDto, List<Salle> salles) {
+        List<ReservationSalle> reservationsSalle = new ArrayList<>();
+        for(int i = 0; i < reservationsSalleDto.size(); i++) {
+            reservationsSalle.add(new ReservationSalle(reservationsSalleDto.get(i).getUuid(), salles.get(i)));
+        }
+        return reservationsSalle;
+    }
 
     @Mapping(target = "uuidSalle", source = "salle.uuid")
     ReservationSalleDto toDto(ReservationSalle reservationSalle);

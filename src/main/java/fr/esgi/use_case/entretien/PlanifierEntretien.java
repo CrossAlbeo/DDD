@@ -9,10 +9,10 @@ import java.util.UUID;
 
 public class PlanifierEntretien {
 
-    final CandidatRepository candidats;
-    final RecruteurRepository recruteurs;
-    final SalleRepository salles;
-    final EntretienRepository entretiens;
+     CandidatRepository candidats;
+     RecruteurRepository recruteurs;
+     SalleRepository salles;
+     EntretienRepository entretiens;
 
     public PlanifierEntretien(CandidatRepository candidats, EntretienRepository entretiens,
                               RecruteurRepository recruteurs, SalleRepository salles) {
@@ -27,7 +27,7 @@ public class PlanifierEntretien {
         // Given
         CandidatDto candidatDto = this.candidats.findById(uuid);
         List<RecruteurDto> selectedRecruteursDto = this.recruteurs.getAvailables(creneauDto);
-        List<SalleDto> selectedSallesDto = this.salles.findAvailables();
+        List<SalleDto> selectedSallesDto = this.salles.findAvailables(creneauDto);
 
         // WHEN
         Entretien entretien = new Entretien(candidatDto);
