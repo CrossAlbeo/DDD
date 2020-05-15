@@ -1,9 +1,8 @@
-package ModelTests;
+package model_tests;
 
 import fr.esgi.commun.dto.CandidatDto;
 import fr.esgi.model.Competence;
 import fr.esgi.commun.dto.CreneauDto;
-import fr.esgi.model.Entretien;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +34,9 @@ public class EntretienTests {
     }
 
     @Test
-    public void test_planifier() {
+    public void should_set_entretien_at_planifier() {
 
     }
+
+
 }
