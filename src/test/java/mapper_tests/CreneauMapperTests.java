@@ -18,8 +18,8 @@ class CreneauMapperTests {
 
     private static List<Creneau> creneaux;
     private static List<CreneauDto> creneauxDto;
-    private static UUID uuidCreneau = UUID.randomUUID();
-    private static UUID uuidCreneauDto = UUID.randomUUID();
+    private static final UUID uuidCreneau = UUID.randomUUID();
+    private static final UUID uuidCreneauDto = UUID.randomUUID();
 
     @BeforeAll
     static void setup() {

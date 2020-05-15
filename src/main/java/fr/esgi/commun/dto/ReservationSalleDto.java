@@ -13,6 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ReservationSalleDto {
     private UUID uuid;
-    private UUID uuidSalle;
+    private UUID uuidSalleDto;
     private CreneauDto creneauDto;
 }
