@@ -5,13 +5,17 @@ import fr.esgi.commun.mappers.CandidatMapper;
 import fr.esgi.commun.mappers.CreneauMapper;
 import fr.esgi.commun.mappers.RecruteurMapper;
 import fr.esgi.commun.mappers.SalleMapper;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Entretien {
     UUID uuid;
