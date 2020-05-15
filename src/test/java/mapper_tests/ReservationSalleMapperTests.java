@@ -29,8 +29,7 @@ class ReservationSalleMapperTests {
 
 
     @BeforeAll
-    public static void setup() {
-
+    static void setup() {
         salle = new Salle(uuidSalle, "22",10,"A");
         creneau = new Creneau( "20/05/15", 14, 15);
         reservationSalle = new ReservationSalle(uuidReservationSalle, salle, creneau);
@@ -41,7 +40,7 @@ class ReservationSalleMapperTests {
     }
 
     @Test
-    public void should_map_reservationSalleModel_to_reservationSalleDto() {
+    void should_map_reservationSalleModel_to_reservationSalleDto() {
 
         ReservationSalleDto uneReservationSalleDto = ReservationSalleMapper.instance.toDto(reservationSalle);
         // CreneauDto unCreneauDto = CreneauMapper.instance.toDto(creneau);
@@ -53,7 +52,7 @@ class ReservationSalleMapperTests {
     }
 
     @Test
-    public void should_map_reservationSalleDto_to_reservationSalleModel() {
+    void should_map_reservationSalleDto_to_reservationSalleModel() {
 
         ReservationSalle uneReservationSalle = ReservationSalleMapper.instance.toModel(reservationSalleDto);
         //Creneau unCreneauModel = CreneauMapper.instance.toModel(creneauDto);

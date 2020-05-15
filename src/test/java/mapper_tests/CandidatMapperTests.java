@@ -1,7 +1,7 @@
 package mapper_tests;
 
 import fr.esgi.commun.dto.CandidatDto;
-²import fr.esgi.commun.mappers.CandidatMapper;
+import fr.esgi.commun.mappers.CandidatMapper;
 import fr.esgi.model.Candidat;
 import fr.esgi.model.Competence;
 
