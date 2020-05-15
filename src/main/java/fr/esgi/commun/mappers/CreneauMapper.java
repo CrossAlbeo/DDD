@@ -13,9 +13,9 @@ public interface CreneauMapper extends fr.esgi.commun.mappers.Mappers<CreneauDto
 
     Creneau toModel(CreneauDto creneauDto);
 
-    List<Creneau> toModel(List<CreneauDto> creneausDto);
+    List<Creneau> toModel(List<CreneauDto> creneauxDto);
 
     CreneauDto toDto(Creneau creneau);
 
-    List<CreneauDto> toDto(List<Creneau> creneaus);
+    List<CreneauDto> toDto(List<Creneau> creneaux);
 }

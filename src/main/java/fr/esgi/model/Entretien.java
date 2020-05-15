@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Getter
 public class Entretien {
-    final UUID uid;
+    final UUID uuid;
     final Candidat candidat;
     Recruteur recruteur;
     ReservationSalle reservationSalle;
@@ -20,7 +20,7 @@ public class Entretien {
     Status status;
 
     public Entretien(CandidatDto candidatDto) {
-        this.uid = UUID.randomUUID();
+        this.uuid = UUID.randomUUID();
         this.candidat = CandidatMapper.instance.toModel(candidatDto);
     }
 
