@@ -1,11 +1,12 @@
 package fr.esgi.model;
 
-import fr.esgi.commun.dto.CreneauDto;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.UUID;
 
 @Getter
+@AllArgsConstructor
 public class Creneau {
     private final UUID uuid;
     private final String date;

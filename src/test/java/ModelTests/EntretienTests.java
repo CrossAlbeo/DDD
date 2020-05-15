@@ -22,12 +22,12 @@ public class EntretienTests {
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
 
-        creneauDtos.add(new CreneauDto());
+        //creneauDtos.add(new CreneauDto());
     }
 
     @Test
     public void should_create_entretien() {
-        Entretien entretien = new Entretien();
+        //Entretien entretien = new Entretien();
     }
 
     @Test
