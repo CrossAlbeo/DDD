@@ -7,7 +7,7 @@ import fr.esgi.model.Candidat;
 import fr.esgi.model.Competence;
 import fr.esgi.use_case.entretien.PlanifierEntretien;
 import fr.esgi.use_case.entretien.repository.*;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -18,17 +18,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlanifierEntretienTests {
 
-    private static PlanifierEntretien planifierEntretien;
-    private static final Candidats candidats = new Candidats();
-    private static final Recruteurs recruteurs = new Recruteurs();
-    private static final Entretiens entretiens = new Entretiens();
-    private static final Salles salles = new Salles();
-    private static final ReservationsSalle reservationsSalle = new ReservationsSalle();
+    private PlanifierEntretien planifierEntretien;
+    private final Candidats candidats = new Candidats();
+    private final Recruteurs recruteurs = new Recruteurs();
+    private final Entretiens entretiens = new Entretiens();
+    private final Salles salles = new Salles();
+    private final ReservationsSalle reservationsSalle = new ReservationsSalle();
 
-    private static final UUID uuidCandidat = UUID.randomUUID();
+    private final UUID uuidCandidat = UUID.randomUUID();
 
-    @BeforeAll
-    static void setup() {
+    @BeforeEach
+    void setup() {
         planifierEntretien = new PlanifierEntretien(candidats, entretiens, recruteurs, salles, reservationsSalle);
 
         List<Competence> competences = new ArrayList<>();
@@ -55,6 +55,6 @@ class PlanifierEntretienTests {
         assertEquals(1, entretiens.find().size());
         EntretienDto entretienDto = entretiens.find().get(0);
 
-        assertEquals(recruteurs.find().get(0).getUuid(), entretienDto.getUuidRecruteur());
+        assertEquals(recruteurs.find().get(0).getUuid().toString(), entretienDto.getUuidRecruteur().toString());
     }
 }

@@ -21,7 +21,7 @@ class EntretienTests {
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
 
-        CreneauDto creneauDto1 = new CreneauDto();
+        List<CreneauDto> creneauDtos = new ArrayList<>();
         creneauDtos.add(new CreneauDto());
         creneauDtos.add(new CreneauDto());
 

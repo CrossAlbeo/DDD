@@ -29,6 +29,7 @@ public interface ReservationSalleMapper extends fr.esgi.commun.mappers.Mappers<R
     }
 
     @Mapping(target = "uuidSalleDto", source = "salle.uuid")
+    @Mapping(target = "creneauDto", source = "creneau")
     ReservationSalleDto toDto(ReservationSalle reservationSalle);
 
     List<ReservationSalleDto> toDto(List<ReservationSalle> reservationsSalle);

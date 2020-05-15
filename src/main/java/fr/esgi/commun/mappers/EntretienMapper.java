@@ -12,10 +12,6 @@ import java.util.List;
 public interface EntretienMapper extends fr.esgi.commun.mappers.Mappers<EntretienDto, Entretien> {
     EntretienMapper instance = Mappers.getMapper(EntretienMapper.class);
 
-    Entretien toModel(EntretienDto entretienDto);
-
-    List<Entretien> toModel(List<EntretienDto> entretiensDto);
-
     @Mapping(target = "uuidCandidat", source = "candidat.uuid")
     @Mapping(target = "uuidRecruteur", source = "recruteur.uuid")
     @Mapping(target = "uuidReservationSalle", source = "reservationSalle.uuid")

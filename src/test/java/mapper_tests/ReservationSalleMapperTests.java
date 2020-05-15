@@ -4,6 +4,7 @@ import fr.esgi.commun.dto.CreneauDto;
 import fr.esgi.commun.dto.ReservationSalleDto;
 import fr.esgi.commun.dto.SalleDto;
 import fr.esgi.commun.mappers.ReservationSalleMapper;
+import fr.esgi.commun.mappers.SalleMapper;
 import fr.esgi.model.Creneau;
 import fr.esgi.model.ReservationSalle;
 import fr.esgi.model.Salle;
@@ -47,18 +48,17 @@ class ReservationSalleMapperTests {
         assertNotNull(uneReservationSalleDto);
         assertEquals(uuidReservationSalle, uneReservationSalleDto.getUuid());
         assertEquals(uuidSalle, uneReservationSalleDto.getUuidSalleDto());
-        assertEquals(14, uneReservationSalleDto.getCreneauDto());
+        assertEquals(14, uneReservationSalleDto.getCreneauDto().getHeureDebut());
     }
 
     @Test
     void should_map_reservationSalleDto_to_reservationSalleModel() {
-        ReservationSalle uneReservationSalle = ReservationSalleMapper.instance.toModel(reservationSalleDto);
+        ReservationSalle uneReservationSalle = ReservationSalleMapper.instance.toModel(reservationSalleDto, salle);
         //Creneau unCreneauModel = CreneauMapper.instance.toModel(creneauDto);
-        //Salle unesalleModel =  SalleMapper.instance.toModel( salleDto);
 
         assertNotNull(uneReservationSalle);
-        assertEquals(uuidReservationSalleDto, uneReservationSalle.getUuid());
-        assertEquals(20, uneReservationSalle.getSalle().getCapacite());
+        assertEquals(uuidReservationSalleDto.toString(), uneReservationSalle.getUuid().toString());
+        assertEquals(10, uneReservationSalle.getSalle().getCapacite());
         assertEquals(10, uneReservationSalle.getCreneau().getHeureDebut());
     }
 }

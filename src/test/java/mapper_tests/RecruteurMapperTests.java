@@ -45,9 +45,24 @@ class RecruteurMapperTests {
         assertNotNull(dto);
         assertEquals(recruteur.getUuid(), dto.getUuid());
         assertEquals("John", dto.getNom());
+        assertEquals(2, dto.getCompetences().size());
         assertEquals(recruteur.getCompetences(), dto.getCompetences());
         assertEquals(10, dto.getAnneesExperience());
         assertEquals(1, dto.getDisponibilites().size());
         assertEquals("date", dto.getDisponibilites().get(0).getDate());
+    }
+
+    @Test
+    void should_map_to_model() {
+        Recruteur recruteur = RecruteurMapper.instance.toModel(recruteurDto);
+
+        assertNotNull(recruteur);
+        assertEquals(uuidRecruteurDto.toString(), recruteur.getUuid().toString());
+        assertEquals("Doe", recruteur.getNom());
+        assertEquals(2, recruteur.getCompetences().size());
+        assertEquals(recruteur.getCompetences(), recruteur.getCompetences());
+        assertEquals(5, recruteur.getAnneesExperience());
+        assertEquals(1, recruteur.getDisponibilites().size());
+        assertEquals("dateDebut", recruteur.getDisponibilites().get(0).getDate());
     }
 }
