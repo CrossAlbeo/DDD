@@ -12,8 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreneauDto {
-    UUID uuid;
     String date;
-    String heureDebut;
-    String heureFin;
+    int heureDebut;
+    int heureFin;
 }

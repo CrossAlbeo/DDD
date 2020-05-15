@@ -18,20 +18,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CreneauMapperTests {
 
-    private static  List<Creneau> creneaux;
+    private static List<Creneau> creneaux;
     private static List<CreneauDto> creneauxDto;
     private static UUID uuidCreneau = UUID.randomUUID();
     private static UUID uuidCreneauDto = UUID.randomUUID();
 
     @BeforeAll
-    public static void  setup() {
-
+    public static void setup() {
         creneaux = new ArrayList<>();
-        creneaux.add(new Creneau(uuidCreneau, "20/05/15", "14", "15"));
+        creneaux.add(new Creneau("20/05/15", 14, 15));
 
         creneauxDto = new ArrayList<>();
-        creneauxDto.add(new CreneauDto(uuidCreneauDto, "20/05/16", "10", "11"));
-
+        creneauxDto.add(new CreneauDto("20/05/16", 10, 11));
     }
 
     @Test
@@ -39,10 +37,9 @@ public class CreneauMapperTests {
 
         List<CreneauDto> creneauxDto = CreneauMapper.instance.toDto(creneaux);
         assertNotNull(creneauxDto);
-        assertEquals(uuidCreneau, creneauxDto.get(0).getUuid());
         assertEquals("20/05/15", creneauxDto.get(0).getDate());
-        assertEquals("14", creneauxDto.get(0).getHeureDebut());
-        assertEquals("15", creneauxDto.get(0).getHeureFin());
+        assertEquals(14, creneauxDto.get(0).getHeureDebut());
+        assertEquals(15, creneauxDto.get(0).getHeureFin());
     }
 
     @Test
@@ -50,10 +47,8 @@ public class CreneauMapperTests {
 
         List<Creneau> creneauxModel = CreneauMapper.instance.toModel(creneauxDto);
         assertNotNull(creneauxModel);
-        assertEquals(uuidCreneauDto, creneauxModel.get(0).getUuid());
         assertEquals("20/05/16", creneauxModel.get(0).getDate());
-        assertEquals("10", creneauxModel.get(0).getHeureDebut());
-        assertEquals("11", creneauxModel.get(0).getHeureFin());
-
+        assertEquals(10, creneauxModel.get(0).getHeureDebut());
+        assertEquals(11, creneauxModel.get(0).getHeureFin());
     }
 }

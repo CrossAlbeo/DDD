@@ -12,15 +12,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Creneau {
-    private UUID uuid;
     private String date;
-    private String heureDebut;
-    private String heureFin;
+    private int heureDebut;
+    private int heureFin;
 
-    public Creneau(String date, String heureDebut, String heureFin) {
-        this.uuid = UUID.randomUUID();
-        this.date = date;
-        this.heureDebut = heureDebut;
-        this.heureFin = heureFin;
+    public boolean contient(Creneau creneau) {
+        if (!this.date.equals(creneau.date)) {
+            return false;
+        }
+        return heureDebut <= creneau.heureDebut && heureFin >= creneau.heureFin;
     }
 }
