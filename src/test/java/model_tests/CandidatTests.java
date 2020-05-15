@@ -29,22 +29,32 @@ public class CandidatTests {
         recruteur = new Recruteur();
         reservationSalle = new ReservationSalle();
         creneau = new Creneau();
-        status = Status.Confirme;
 
         entretien = new Entretien(uuidEntretien, candidat, recruteur, reservationSalle, creneau, status);
 
     }
 
     @Test
-    void should_be_confirmed() {
+    void should_be_ceated() {
         assertNotNull(entretien);
+    }
+
+    @Test
+    void should_be_confirmed() {
+        entretien.confirmer();
         assertEquals(Status.Confirme, entretien.getStatus());
     }
+
     @Test
     void should_be_cancelled() {
         entretien.annuler();
         assertEquals(Status.Annule, entretien.getStatus());
     }
 
-
+    @Test
+    void should_be_reported() {
+        entretien.reporter();
+        assertEquals(Status.Planifie, entretien.getStatus());
+    }
+    
 }
