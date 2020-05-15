@@ -1,22 +1,23 @@
 package fr.esgi.commun.mappers;
 
-import fr.esgi.commun.dto.CreneauDto;
-import fr.esgi.model.Creneau;
+import fr.esgi.commun.dto.EntretienDto;
+import fr.esgi.model.Entretien;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
 @Mapper
-public interface EntretienMapper extends fr.esgi.commun.mappers.Mappers<CreneauDto, Creneau> {
-    CreneauMapper instance = Mappers.getMapper(CreneauMapper.class);
+public interface EntretienMapper extends fr.esgi.commun.mappers.Mappers<EntretienDto, Entretien> {
+    EntretienMapper instance = Mappers.getMapper(EntretienMapper.class);
 
-    Creneau toModel(CreneauDto creneauDto);
+    Entretien toModel(EntretienDto entretienDto);
 
-    List<Creneau> toModel(List<CreneauDto> creneausDto);
+    List<Entretien> toModel(List<EntretienDto> entretiensDto);
+    
+    EntretienDto toDto(Entretien entretien);
 
-    CreneauDto toDto(Creneau creneau);
-
-    List<CreneauDto> toDto(List<Creneau> creneaus);
+    List<EntretienDto> toDto(List<Entretien> entretiens);
 }
 
