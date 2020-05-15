@@ -20,11 +20,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class RecruteurMapperTests {
     private static Recruteur recruteur;
     private static RecruteurDto recruteurDto;
-    private static UUID uuidCreneau = UUID.randomUUID();
-    private static UUID uuidRecruteur = UUID.randomUUID();
-    private static UUID uuidRecruteurDto = UUID.randomUUID();
-    private static UUID uuidCreneauDto = UUID.randomUUID();
-
+    private static final UUID uuidRecruteur = UUID.randomUUID();
+    private static final UUID uuidRecruteurDto = UUID.randomUUID();
 
     @BeforeAll
     static void setup() {
@@ -33,11 +30,11 @@ class RecruteurMapperTests {
         competences.add(Competence.DotNET);
 
         List<Creneau> creneaux = new ArrayList<>();
-        creneaux.add(new Creneau(uuidCreneau,"date", "14", "15"));
+        creneaux.add(new Creneau("date", 14, 15));
         recruteur = new Recruteur(uuidRecruteur,"John", competences, 10, creneaux);
 
         List<CreneauDto> creneauxDto = new ArrayList<>();
-        creneauxDto.add(new CreneauDto(uuidCreneauDto, "dateDebut", "10", "11"));
+        creneauxDto.add(new CreneauDto("dateDebut", 10, 11));
         recruteurDto = new RecruteurDto(uuidRecruteurDto, "Doe", competences, 5, creneauxDto);
     }
 

@@ -12,5 +12,4 @@ public class SalleDto {
     private String numero;
     private int capacite;
     private String batiment;
-    private boolean disponible;
 }

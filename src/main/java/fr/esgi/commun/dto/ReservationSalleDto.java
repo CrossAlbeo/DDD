@@ -14,4 +14,5 @@ import java.util.UUID;
 public class ReservationSalleDto {
     private UUID uuid;
     private UUID uuidSalle;
+    private CreneauDto creneauDto;
 }

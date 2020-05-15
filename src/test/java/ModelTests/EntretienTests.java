@@ -12,17 +12,21 @@ import java.util.List;
 
 public class EntretienTests {
 
-    List<Competence> competences;
-    List<CreneauDto> creneauDtos;
-    CandidatDto candidatDto;
+    static List<Competence> competences;
+    static List<CreneauDto> creneauDtos;
+    static CandidatDto candidatDto;
 
     @BeforeAll
-    public void setup() {
+    public static void setup() {
         competences = new ArrayList<Competence>();
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
 
-        //creneauDtos.add(new CreneauDto());
+        CreneauDto creneauDto1 = new CreneauDto();
+        creneauDtos.add(new CreneauDto());
+        creneauDtos.add(new CreneauDto());
+
+        candidatDto = new CandidatDto();
     }
 
     @Test

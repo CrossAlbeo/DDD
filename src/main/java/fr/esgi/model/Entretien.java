@@ -29,16 +29,22 @@ public class Entretien {
     public void planifier(List<RecruteurDto> recruteursDto, List<SalleDto> sallesDto,
                           CreneauDto creneauDto) {
         List<Recruteur> recruteurs = RecruteurMapper.instance.toModel(recruteursDto);
+        Creneau creneau = CreneauMapper.instance.toModel(creneauDto);
         for (Recruteur recruteur:
              recruteurs) {
             if (recruteur.estQualifie(this.candidat) &&
                     recruteur.getAnneesExperience() > this.candidat.getAnneesExperience()) {
-                this.recruteur = recruteur;
+                Creneau creneauDisponible = recruteur.creneauDisponible(creneau);
+                if (creneauDisponible != null) {
+                    recruteur.reserverCreneau(creneauDisponible);
+                    this.recruteur = recruteur;
+                    break;
+                }
             }
         }
 
         if (sallesDto.size() > 0) {
-             this.reservationSalle = new ReservationSalle(SalleMapper.instance.toModel(sallesDto.get(0)));
+             this.reservationSalle = new ReservationSalle(SalleMapper.instance.toModel(sallesDto.get(0)), creneau);
         }
 
         this.creneau = CreneauMapper.instance.toModel(creneauDto);

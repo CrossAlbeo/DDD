@@ -12,9 +12,11 @@ import java.util.UUID;
 public class ReservationSalle {
     private UUID uuid;
     private Salle salle;
+    private Creneau creneau;
 
-    public ReservationSalle(Salle salle) {
+    public ReservationSalle(Salle salle, Creneau creneau) {
         this.uuid = UUID.randomUUID();
         this.salle = salle;
+        this.creneau = creneau;
     }
 }

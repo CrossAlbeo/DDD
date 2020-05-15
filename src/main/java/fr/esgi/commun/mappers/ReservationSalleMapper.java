@@ -16,13 +16,14 @@ public interface ReservationSalleMapper extends fr.esgi.commun.mappers.Mappers<R
     ReservationSalleMapper instance = Mappers.getMapper(ReservationSalleMapper.class);
 
     default ReservationSalle toModel(ReservationSalleDto reservationSalleDto, Salle salle) {
-        return new ReservationSalle(reservationSalleDto.getUuid(), salle);
+        return new ReservationSalle(reservationSalleDto.getUuid(), salle, CreneauMapper.instance.toModel(reservationSalleDto.getCreneauDto()));
     }
 
     default List<ReservationSalle> toModel(List<ReservationSalleDto> reservationsSalleDto, List<Salle> salles) {
         List<ReservationSalle> reservationsSalle = new ArrayList<>();
-        for(int i = 0; i < reservationsSalleDto.size(); i++) {
-            reservationsSalle.add(new ReservationSalle(reservationsSalleDto.get(i).getUuid(), salles.get(i)));
+        for (int i = 0; i < reservationsSalleDto.size(); i++) {
+            reservationsSalle.add(new ReservationSalle(reservationsSalleDto.get(i).getUuid(),
+                    salles.get(i), CreneauMapper.instance.toModel(reservationsSalleDto.get(0).getCreneauDto())));
         }
         return reservationsSalle;
     }
