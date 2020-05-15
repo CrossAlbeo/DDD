@@ -1,8 +1,6 @@
-package MapperTests;
+package mapper_tests;
 
-import fr.esgi.commun.dto.CandidatDto;
 import fr.esgi.commun.dto.CreneauDto;
-import fr.esgi.commun.mappers.CandidatMapper;
 
 import fr.esgi.commun.mappers.CreneauMapper;
 import fr.esgi.model.Creneau;

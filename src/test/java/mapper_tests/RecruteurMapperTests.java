@@ -1,4 +1,4 @@
-package MapperTests;
+package mapper_tests;
 
 import fr.esgi.commun.dto.CreneauDto;
 import fr.esgi.commun.dto.RecruteurDto;

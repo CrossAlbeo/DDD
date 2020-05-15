@@ -1,4 +1,4 @@
-package fr.esgi.use_case.entretien;
+package fr.esgi.use_case.entretien.repository;
 
 import fr.esgi.commun.dto.CandidatDto;
 
