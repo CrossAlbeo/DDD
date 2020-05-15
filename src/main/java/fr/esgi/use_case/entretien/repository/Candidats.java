@@ -25,4 +25,8 @@ public class Candidats implements CandidatRepository {
         }
         return null;
     }
+
+    public void sauvegarder(CandidatDto candidatDto) {
+        this.candidats.add(candidatDto);
+    }
 }

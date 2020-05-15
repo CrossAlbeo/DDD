@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface CandidatRepository {
     CandidatDto findById(UUID uuid);
     List<CandidatDto> find();
+    void sauvegarder(CandidatDto candidatDto);
 }

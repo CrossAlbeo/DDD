@@ -1,11 +1,9 @@
 package mapper_tests;
 
 import fr.esgi.commun.dto.CandidatDto;
-import fr.esgi.commun.dto.CreneauDto;
-import fr.esgi.commun.mappers.CandidatMapper;
+²import fr.esgi.commun.mappers.CandidatMapper;
 import fr.esgi.model.Candidat;
 import fr.esgi.model.Competence;
-import fr.esgi.model.Creneau;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -30,13 +28,8 @@ class CandidatMapperTests {
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
 
-        List<Creneau> creneaux = new ArrayList<>();
-        creneaux.add(new Creneau("date", 14, 15));
-        candidat = new Candidat(uuidCandidat, "Will", competences, 10, creneaux);
-
-        List<CreneauDto> creneauxDto = new ArrayList<>();
-        creneauxDto.add(new CreneauDto("date", 10, 11));
-        candidatDto = new CandidatDto(uuidcandidatDto, "Smith", competences, 5, creneauxDto);
+        candidat = new Candidat(uuidCandidat, "Will", competences, 10);
+        candidatDto = new CandidatDto(uuidcandidatDto, "Smith", competences, 5);
     }
 
     @Test
@@ -48,8 +41,6 @@ class CandidatMapperTests {
         assertEquals("Will", candidatDto.getNom());
         assertEquals(candidat.getCompetences(), candidatDto.getCompetences());
         assertEquals(10, candidatDto.getAnneesExperience());
-        assertEquals(1, candidatDto.getDisponibilites().size());
-        assertEquals("date", candidatDto.getDisponibilites().get(0).getDate());
     }
 
     @Test
@@ -61,7 +52,5 @@ class CandidatMapperTests {
         assertEquals("Smith", candidatModel.getNom());
         assertEquals(candidat.getCompetences(), candidatModel.getCompetences());
         assertEquals(5, candidatModel.getAnneesExperience());
-        assertEquals(1, candidatModel.getDisponibilites().size());
-        assertEquals("date", candidatModel.getDisponibilites().get(0).getDate());
     }
 }

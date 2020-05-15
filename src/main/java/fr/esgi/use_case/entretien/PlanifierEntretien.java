@@ -27,7 +27,6 @@ public class PlanifierEntretien {
     }
 
     public void planifier(UUID uuid, CreneauDto creneauDto) {
-
         // Given
         CandidatDto candidatDto = this.candidats.findById(uuid);
         List<RecruteurDto> selectedRecruteursDto = this.recruteurs.findAvailables(creneauDto);

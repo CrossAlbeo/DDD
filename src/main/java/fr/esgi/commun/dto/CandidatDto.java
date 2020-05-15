@@ -18,5 +18,4 @@ public class CandidatDto {
     private String nom;
     private List<Competence> competences;
     private int anneesExperience;
-    private List<CreneauDto> disponibilites;
 }
