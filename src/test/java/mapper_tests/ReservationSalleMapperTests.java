@@ -41,7 +41,6 @@ class ReservationSalleMapperTests {
 
     @Test
     void should_map_reservationSalleModel_to_reservationSalleDto() {
-
         ReservationSalleDto uneReservationSalleDto = ReservationSalleMapper.instance.toDto(reservationSalle);
         // CreneauDto unCreneauDto = CreneauMapper.instance.toDto(creneau);
 
@@ -53,7 +52,6 @@ class ReservationSalleMapperTests {
 
     @Test
     void should_map_reservationSalleDto_to_reservationSalleModel() {
-
         ReservationSalle uneReservationSalle = ReservationSalleMapper.instance.toModel(reservationSalleDto);
         //Creneau unCreneauModel = CreneauMapper.instance.toModel(creneauDto);
         //Salle unesalleModel =  SalleMapper.instance.toModel( salleDto);

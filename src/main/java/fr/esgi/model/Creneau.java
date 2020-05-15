@@ -9,12 +9,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Creneau {
+public
+class Creneau {
     private String date;
     private int heureDebut;
     private int heureFin;
 
-    public boolean contient(Creneau creneau) {
+    boolean contient(Creneau creneau) {
         if (!this.date.equals(creneau.date)) {
             return false;
         }

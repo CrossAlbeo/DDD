@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -18,8 +17,6 @@ class CreneauMapperTests {
 
     private static List<Creneau> creneaux;
     private static List<CreneauDto> creneauxDto;
-    private static final UUID uuidCreneau = UUID.randomUUID();
-    private static final UUID uuidCreneauDto = UUID.randomUUID();
 
     @BeforeAll
     static void setup() {

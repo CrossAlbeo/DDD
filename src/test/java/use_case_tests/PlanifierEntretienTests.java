@@ -1,5 +1,7 @@
 package use_case_tests;
 
+import fr.esgi.commun.dto.CreneauDto;
+import fr.esgi.commun.dto.EntretienDto;
 import fr.esgi.commun.mappers.CandidatMapper;
 import fr.esgi.model.Candidat;
 import fr.esgi.model.Competence;
@@ -47,6 +49,12 @@ class PlanifierEntretienTests {
 
     @Test
     void should_planifier_entretien() {
+        CreneauDto creneauDto = new CreneauDto("20/05/16", 10, 11);
+        planifierEntretien.planifier(uuidCandidat, creneauDto);
 
+        assertEquals(1, entretiens.find().size());
+        EntretienDto entretienDto = entretiens.find().get(0);
+
+        assertEquals(recruteurs.find().get(0).getUuid(), entretienDto.getUuidRecruteur());
     }
 }

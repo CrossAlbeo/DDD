@@ -25,17 +25,14 @@ public class Entretien {
     Creneau creneau;
     Status status;
 
-    public Entretien(CandidatDto candidatDto) {
+    public Entretien(CandidatDto candidatDto, List<RecruteurDto> recruteursDto, CreneauDto creneauDto) {
         this.uuid = UUID.randomUUID();
         this.candidat = CandidatMapper.instance.toModel(candidatDto);
-    }
+        this.creneau = CreneauMapper.instance.toModel(creneauDto);
 
-    public void planifier(List<RecruteurDto> recruteursDto, List<SalleDto> sallesDto,
-                          CreneauDto creneauDto) {
         List<Recruteur> recruteurs = RecruteurMapper.instance.toModel(recruteursDto);
-        Creneau creneau = CreneauMapper.instance.toModel(creneauDto);
         for (Recruteur recruteur:
-             recruteurs) {
+                recruteurs) {
             if (recruteur.estQualifie(this.candidat) &&
                     recruteur.getAnneesExperience() > this.candidat.getAnneesExperience()) {
                 Creneau creneauDisponible = recruteur.creneauDisponible(creneau);
@@ -46,12 +43,12 @@ public class Entretien {
                 }
             }
         }
+    }
 
+    public void planifier(List<SalleDto> sallesDto) {
         if (sallesDto.size() > 0) {
              this.reservationSalle = new ReservationSalle(SalleMapper.instance.toModel(sallesDto.get(0)), creneau);
         }
-
-        this.creneau = CreneauMapper.instance.toModel(creneauDto);
         this.status = Status.Planifie;
     }
 

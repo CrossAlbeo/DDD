@@ -16,6 +16,7 @@ public class EntretienDto {
     private UUID uuid;
     private UUID uuidCreneau;
     private UUID uuidCandidat;
+    private UUID uuidRecruteur;
     private UUID uuidReservationSalle;
     private Status status;
 }

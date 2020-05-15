@@ -33,13 +33,12 @@ public class PlanifierEntretien {
         List<SalleDto> selectedSallesDto = this.salles.find();
 
         // WHEN
-        Entretien entretien = new Entretien(candidatDto);
-        entretien.planifier(selectedRecruteursDto, selectedSallesDto, creneauDto);
+        Entretien entretien = new Entretien(candidatDto, selectedRecruteursDto, creneauDto);
+        entretien.planifier(selectedSallesDto);
 
         // THEN
         entretiens.sauvegarder(EntretienMapper.instance.toDto(entretien));
         recruteurs.sauvegarder(RecruteurMapper.instance.toDto(entretien.getRecruteur()));
         reservationsSalle.sauvegarder(ReservationSalleMapper.instance.toDto(entretien.getReservationSalle()));
-
     }
 }
