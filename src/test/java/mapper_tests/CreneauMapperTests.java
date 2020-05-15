@@ -14,7 +14,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class CreneauMapperTests {
+class CreneauMapperTests {
 
     private static List<Creneau> creneaux;
     private static List<CreneauDto> creneauxDto;
@@ -22,7 +22,7 @@ public class CreneauMapperTests {
     private static UUID uuidCreneauDto = UUID.randomUUID();
 
     @BeforeAll
-    public static void setup() {
+    static void setup() {
         creneaux = new ArrayList<>();
         creneaux.add(new Creneau("20/05/15", 14, 15));
 
@@ -31,7 +31,7 @@ public class CreneauMapperTests {
     }
 
     @Test
-    public void should_map_listCreneauxModel_to_listCreneauxDto() {
+    void should_map_listCreneauxModel_to_listCreneauxDto() {
 
         List<CreneauDto> creneauxDto = CreneauMapper.instance.toDto(creneaux);
         assertNotNull(creneauxDto);
@@ -41,7 +41,7 @@ public class CreneauMapperTests {
     }
 
     @Test
-    public void should_map_creneauxDto_to_creneauxModel() {
+    void should_map_creneauxDto_to_creneauxModel() {
 
         List<Creneau> creneauxModel = CreneauMapper.instance.toModel(creneauxDto);
         assertNotNull(creneauxModel);

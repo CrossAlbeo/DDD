@@ -2,7 +2,7 @@ package mapper_tests;
 
 import fr.esgi.commun.dto.CandidatDto;
 import fr.esgi.commun.dto.CreneauDto;
-import fr.esgi.commun.mappers.CandidatMapper;;
+import fr.esgi.commun.mappers.CandidatMapper;
 import fr.esgi.model.Candidat;
 import fr.esgi.model.Competence;
 import fr.esgi.model.Creneau;
@@ -17,7 +17,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class CandidatMapperTests {
+class CandidatMapperTests {
 
     private static Candidat candidat;
     private static CandidatDto candidatDto;
@@ -25,7 +25,7 @@ public class CandidatMapperTests {
     private static final UUID uuidcandidatDto = UUID.randomUUID();
 
     @BeforeAll
-    public static void  setup() {
+    static void  setup() {
         List<Competence> competences = new ArrayList<>();
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
@@ -40,7 +40,7 @@ public class CandidatMapperTests {
     }
 
     @Test
-    public void should_map_candidatModel_to_candidatDto() {
+    void should_map_candidatModel_to_candidatDto() {
         CandidatDto candidatDto = CandidatMapper.instance.toDto(candidat);
 
         assertNotNull(candidatDto);
@@ -53,7 +53,7 @@ public class CandidatMapperTests {
     }
 
     @Test
-    public void should_map_candidatDto_to_candidatModel() {
+    void should_map_candidatDto_to_candidatModel() {
         Candidat candidatModel = CandidatMapper.instance.toModel(candidatDto);
 
         assertNotNull(candidatModel);

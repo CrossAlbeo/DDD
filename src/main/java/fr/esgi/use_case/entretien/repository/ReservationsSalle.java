@@ -16,4 +16,11 @@ public class ReservationsSalle implements ReservationSalleRepository {
     public List<ReservationSalleDto> findByCreneau(Creneau creneau) {
         return this.reservationsSalleDto;
     }
+    public List<ReservationSalleDto> find() {
+        return this.reservationsSalleDto;
+    }
+
+    public void sauvegarder(ReservationSalleDto reservationSalleDto) {
+        this.reservationsSalleDto.add(reservationSalleDto);
+    }
 }

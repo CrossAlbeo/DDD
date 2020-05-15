@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Recruteurs implements RecruteurRepository {
-    final List<RecruteurDto> recruteurs;
+    private final List<RecruteurDto> recruteurs;
 
     public Recruteurs() {
         this.recruteurs = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Recruteurs implements RecruteurRepository {
         this.recruteurs.add(new RecruteurDto(UUID.randomUUID(), "Diego", competences, 10, creneauxDto));
     }
 
-    public List<RecruteurDto> findAll() {
+    public List<RecruteurDto> find() {
         return this.recruteurs;
     }
 

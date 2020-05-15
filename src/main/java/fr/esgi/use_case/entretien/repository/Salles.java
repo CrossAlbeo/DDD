@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Salles implements SalleRepository {
-    final List<SalleDto> sallesDto;
+    private final List<SalleDto> sallesDto;
 
     public Salles() {
         this.sallesDto = new ArrayList<>();

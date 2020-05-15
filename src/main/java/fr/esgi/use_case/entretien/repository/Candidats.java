@@ -14,6 +14,8 @@ public class Candidats implements CandidatRepository {
         this.candidats = new ArrayList<>();
     }
 
+    public List<CandidatDto> find() { return candidats; }
+
     public CandidatDto findById(UUID uuid) {
         for (CandidatDto candidat :
                 candidats) {

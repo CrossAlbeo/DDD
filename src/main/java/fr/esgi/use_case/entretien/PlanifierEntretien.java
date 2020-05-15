@@ -3,21 +3,19 @@ package fr.esgi.use_case.entretien;
 import fr.esgi.commun.dto.*;
 import fr.esgi.commun.mappers.EntretienMapper;
 import fr.esgi.commun.mappers.RecruteurMapper;
+import fr.esgi.commun.mappers.ReservationSalleMapper;
 import fr.esgi.model.Entretien;
 import fr.esgi.use_case.entretien.repository.*;
-import lombok.Getter;
 
 import java.util.List;
 import java.util.UUID;
 
-@Getter
 public class PlanifierEntretien {
-
-     CandidatRepository candidats;
-     RecruteurRepository recruteurs;
-     SalleRepository salles;
-     EntretienRepository entretiens;
-     ReservationSalleRepository reservationSalleRepository;
+     private final CandidatRepository candidats;
+     private final RecruteurRepository recruteurs;
+     private final SalleRepository salles;
+     private final EntretienRepository entretiens;
+     private final ReservationSalleRepository reservationsSalle;
 
     public PlanifierEntretien(CandidatRepository candidats, EntretienRepository entretiens, RecruteurRepository recruteurs,
                               SalleRepository salles, ReservationSalleRepository reservationSalleRepository) {
@@ -25,7 +23,7 @@ public class PlanifierEntretien {
         this.recruteurs = recruteurs;
         this.salles = salles;
         this.entretiens = entretiens;
-        this.reservationSalleRepository = reservationSalleRepository;
+        this.reservationsSalle = reservationSalleRepository;
     }
 
     public void planifier(UUID uuid, CreneauDto creneauDto) {
@@ -42,6 +40,7 @@ public class PlanifierEntretien {
         // THEN
         entretiens.sauvegarder(EntretienMapper.instance.toDto(entretien));
         recruteurs.sauvegarder(RecruteurMapper.instance.toDto(entretien.getRecruteur()));
+        reservationsSalle.sauvegarder(ReservationSalleMapper.instance.toDto(entretien.getReservationSalle()));
 
     }
 }

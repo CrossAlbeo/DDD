@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public class Entretiens implements EntretienRepository {
-    final List<EntretienDto> entretienDtos;
+    private final List<EntretienDto> entretienDtos;
 
     public Entretiens() {
         this.entretienDtos = new ArrayList<>();
     }
+
+    public List<EntretienDto> find() { return this.entretienDtos; }
 
     public EntretienDto findById(UUID uuid) {
         for (EntretienDto entretien :

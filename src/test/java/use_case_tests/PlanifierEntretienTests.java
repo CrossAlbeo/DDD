@@ -7,24 +7,31 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlanifierEntretienTests {
+class PlanifierEntretienTests {
 
-    static PlanifierEntretien planifierEntretien;
+    private static PlanifierEntretien planifierEntretien;
+    private static final Candidats candidats = new Candidats();
+    private static final Recruteurs recruteurs = new Recruteurs();
+    private static final Entretiens entretiens = new Entretiens();
+    private static final Salles salles = new Salles();
+    private static final ReservationsSalle reservationsSalle = new ReservationsSalle();
 
     @BeforeAll
-    public static void setup() {
-        planifierEntretien = new PlanifierEntretien(new Candidats(), new Entretiens(), new Recruteurs(),
-                new Salles(), new ReservationsSalle());
+    static void setup() {
+        planifierEntretien = new PlanifierEntretien(candidats, entretiens, recruteurs, salles, reservationsSalle);
     }
 
     @Test
-    public void should_create_planifierEntretien() {
-        assertEquals(1, planifierEntretien.getRecruteurs().findAll());
-        assertEquals();
+    void should_create_planifierEntretien() {
+        assertEquals(0, candidats.find().size());
+        assertEquals(0, entretiens.find().size());
+        assertEquals(1, recruteurs.find().size());
+        assertEquals(3, salles.find().size());
+        assertEquals(0, reservationsSalle.find().size());
     }
 
     @Test
-    public void should_planifier_entretien() {
+    void should_planifier_entretien() {
 
     }
 }

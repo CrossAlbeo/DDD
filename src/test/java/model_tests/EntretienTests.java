@@ -9,15 +9,15 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntretienTests {
+class EntretienTests {
 
-    static List<Competence> competences;
-    static List<CreneauDto> creneauDtos;
-    static CandidatDto candidatDto;
+    private static List<Competence> competences;
+    private static List<CreneauDto> creneauDtos;
+    private static CandidatDto candidatDto;
 
     @BeforeAll
-    public static void setup() {
-        competences = new ArrayList<Competence>();
+    static void setup() {
+        competences = new ArrayList<>();
         competences.add(Competence.Java);
         competences.add(Competence.DotNET);
 
@@ -29,12 +29,12 @@ public class EntretienTests {
     }
 
     @Test
-    public void should_create_entretien() {
+    void should_create_entretien() {
         //Entretien entretien = new Entretien();
     }
 
     @Test
-    public void should_set_entretien_at_planifier() {
+    void should_set_entretien_at_planifier() {
 
     }
 
